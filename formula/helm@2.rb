@@ -22,6 +22,7 @@ class HelmAT2 < Formula
       system "make", "build"
 
       bin.install "bin/helm"
+      mv "bin/helm", "bin/helm2"
       bin.install "bin/tiller"
       man1.install Dir["docs/man/man1/*"]
 
