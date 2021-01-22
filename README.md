@@ -1,2 +1,8 @@
 # homebrew-tools
-tap for specific handy tools
+Tap with handy tools for daily duities.
+
+## helm v2.14.1
+Custom brew formulae which will not conflict with existing helm 3 installations.
+```bash
+brew install pgumeniuk/tools/helm@2
+```
