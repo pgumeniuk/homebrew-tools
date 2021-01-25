@@ -1,4 +1,4 @@
-class HelmAT2 < Formula
+class HelmAT214 < Formula
   desc "Kubernetes package manager"
   homepage "https://helm.sh/"
   url "https://github.com/helm/helm.git",
@@ -22,18 +22,13 @@ class HelmAT2 < Formula
       system "make", "build"
 
       bin.install "bin/helm"
-
-## Uncomment if need to work with helm3 and helm2 at the same time
-#      mv bin/"helm", bin/"helm2"
-##
-
       bin.install "bin/tiller"
       man1.install Dir["docs/man/man1/*"]
 
-      output = Utils.safe_popen_read({ "SHELL" => "bash" }, bin/"helm2", "completion", "bash")
+      output = Utils.safe_popen_read({ "SHELL" => "bash" }, bin/"helm", "completion", "bash")
       (bash_completion/"helm2").write output
 
-      output = Utils.safe_popen_read({ "SHELL" => "zsh" }, bin/"helm2", "completion", "zsh")
+      output = Utils.safe_popen_read({ "SHELL" => "zsh" }, bin/"helm", "completion", "zsh")
       (zsh_completion/"_helm2").write output
 
       prefix.install_metafiles
