@@ -2,7 +2,7 @@ name: Check latest Lens version
 
 on:
   schedule:
-    - cron: '10 0 * * FRI'
+    - cron: '10 08 */15 * *'
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
           curl -s https://lens-binaries.s3.amazonaws.com/ide/latest-mac.yml |\
             grep -o "version:.*-latest" | grep -oP "(\d+(:?\.\d+)+)" |\
             head -n 1 > version
-          export LENS_VERSION=$(cat version)
+          export LENS_VERSION=$(cat ./Casks/openlens-version)
           echo "LENS_VERSION=$LENS_VERSION" >> $GITHUB_ENV
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.0.0
